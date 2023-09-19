@@ -1,0 +1,143 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 20px;
+    text-align: center;
+}
+
+.mainSection{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.jeu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.devineP{
+    text-align: center;
+}
+
+.historyP{
+    text-align: center;
+}
+
+footer{
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+svg{
+    width: 100%;
+}
+
+#rect2{
+    width: 0px;
+    animation: anim1 2s ease forwards; 
+}
+
+#rect3{
+    height: 0px;
+    animation: anim2 2s ease forwards; 
+}
+
+#rect4{
+    width: 0px;
+    animation: anim3 2s ease forwards; 
+}
+
+#rect5{
+    height: 0px;
+    animation: anim4 2s ease forwards; 
+}
+
+#rect6{
+    height: 0px;
+    animation: anim5 2s ease forwards; 
+}
+
+#path6{
+    stroke-dashoffset: 800px;
+    stroke-dasharray: 800px;
+    animation: anim6 8s ease forwards; 
+}
+
+#rect7{
+    height: 0px;
+    animation: anim7 2s ease forwards; 
+}
+
+#rect8{
+    width: 0px;
+    animation: anim8 2s ease forwards; 
+}
+
+#rect9{
+    width: 0px;
+    animation: anim8 2s ease forwards; 
+}
+
+#rect10{
+    width: 0px;
+    animation: anim8 2s ease forwards; 
+}
+
+@keyframes anim2 {
+    to {
+        height: 190px;
+    }
+}
+@keyframes anim1 {
+    to {
+        width: 60px;
+    }
+}
+@keyframes anim3 {
+    to {
+        width: 180px;
+    }
+}
+@keyframes anim4 {
+    to {
+        height: 40px;
+    }
+}
+@keyframes anim5 {
+    to {
+        height: 20px;
+    }
+}
+@keyframes anim6 {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes anim7 {
+    to {
+        height: 68px;
+    }
+}
+@keyframes anim8 {
+    to {
+        width: 40px;
+    }
+}
