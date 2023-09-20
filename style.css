@@ -40,6 +40,15 @@ h1{
     text-align: center;
 }
 
+.erreur{
+    visibility: hidden;
+}
+
+#erreur{
+    
+    animation: horizontal-shaking 0.5s;
+}
+
 footer{
     margin-top: auto;
     width: 100%;
@@ -53,52 +62,62 @@ svg{
 #rect2{
     width: 0px;
     animation: anim1 2s ease forwards; 
+    display: none;
 }
 
 #rect3{
     height: 0px;
-    animation: anim2 2s ease forwards; 
+    animation: anim2 2s ease forwards;
+    display: none;
 }
 
 #rect4{
     width: 0px;
-    animation: anim3 2s ease forwards; 
+    animation: anim3 2s ease forwards;
+    display: none;
 }
 
 #rect5{
     height: 0px;
-    animation: anim4 2s ease forwards; 
+    animation: anim4 2s ease forwards;
+    display: none;
 }
 
 #rect6{
     height: 0px;
-    animation: anim5 2s ease forwards; 
-}
-
-#path6{
-    stroke-dashoffset: 800px;
-    stroke-dasharray: 800px;
-    animation: anim6 8s ease forwards; 
+    animation: anim5 2s ease forwards;
+    display: none;
 }
 
 #rect7{
-    height: 0px;
-    animation: anim7 2s ease forwards; 
+    stroke-dashoffset: 800px;
+    stroke-dasharray: 800px;
+    animation: anim6 8s ease forwards;
+    display: none;
 }
 
 #rect8{
-    width: 0px;
-    animation: anim8 2s ease forwards; 
+    height: 0px;
+    animation: anim7 2s ease forwards;
+    display: none;
 }
 
 #rect9{
     width: 0px;
-    animation: anim8 2s ease forwards; 
+    animation: anim8 2s ease forwards;
+    display: none;
 }
 
 #rect10{
     width: 0px;
-    animation: anim8 2s ease forwards; 
+    animation: anim8 2s ease forwards;
+    display: none;
+}
+
+#rect11{
+    width: 0px;
+    animation: anim8 2s ease forwards;
+    display: none;
 }
 
 @keyframes anim2 {
@@ -141,3 +160,11 @@ svg{
         width: 40px;
     }
 }
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+   }
