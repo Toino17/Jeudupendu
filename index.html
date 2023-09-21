@@ -17,6 +17,7 @@
                 <p class="devineP">Mot à deviner</p>
                 <p class="historyP">Historique</p>
                 <p class="erreur">Lettre déjà utilisée</p>
+                <button id="open" class="tryWord" onclick="Modal()" >Proposer un mot</button>
             </div>
             <div class="pendu">
             <svg width="200px" height="200px" viewBox="0 0 210 297" version="1.1" id="svg1" inkscape:version="1.3 (0e150ed6c4, 2023-07-21)" sodipodi:docname="pendu.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs1"><linearGradient id="swatch7" inkscape:swatch="solid"><stop style="stop-color:#000000;stop-opacity:1;" offset="0" id="stop7" /></linearGradient></defs>
@@ -90,6 +91,26 @@
             </svg>
             </div>
         </div>            
+    </section>
+    <section>
+        <div class="containerBgOpacity" id="arrierePlan"></div>
+        <div class="modalContentPerso" id="premierPlan">
+            <div class="headerModalPerso">
+                <div class="close">✕</div>
+            </div>
+
+            <div class="bodyModalPerso">
+                <div class="elementBoby">
+                    <input type="text" class="tryInput">
+                </div>
+            </div>
+            
+            <div class="footerModalPerso">
+                <div class="elementFooter">
+                    <button class="playButton3">Valider</button>
+                </div>
+            </div>
+        </div>
     </section>
     <footer>
         <p>Made by me</p>

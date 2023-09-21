@@ -40,6 +40,8 @@ let data = [
 ]
 
 let playbutton = document.querySelector(".play")
+let playbutton2 = document.querySelector(".tryWord")
+let playbutton3 = document.querySelector(".playButton3")
 let UnderGuess = ""
 let baliseHistory = document.querySelector(".historyP")
 let historia = "Historique: "
@@ -47,7 +49,14 @@ let reg = /^[a-zA-Zé]$/
 let attempt=1
 let alreadyUse = 0
 let erreur = document.querySelector(".erreur")
+let balisedevineP = document.querySelector(".devineP")
 
+
+function affiche (){
+    baliseHistory.style.visibility = "visible"
+    balisedevineP.style.visibility = "visible"
+    playbutton2.style.visibility = "visible"
+}
 
 function searchRandomWord(){
    let randomNumber = Math.floor((Math.random() * data.length))
@@ -75,7 +84,7 @@ function history(){
    let erreur = document.querySelector(".erreur")
    if (indexstory ==-1){
     erreur.style.visibility = "hidden"
-    erreur.innerHTML = ""
+    erreur.innerHTML = "Message Erreur"
     historia += event.key.toLowerCase()
     baliseHistory.innerHTML = historia
     return alreadyUse = 0
@@ -92,62 +101,93 @@ function history(){
 function reset(){
     baliseHistory.innerHTML = "Historique: "
     historia = "Historique: "
+        for (attempt=2 ; attempt <= 11; attempt++) {
+        document.getElementById(`rect${attempt}`).style.display = "none"   
+    }
+    attempt = 1
 }
 
 
 
-playbutton.addEventListener("click", function() {
+playbutton.addEventListener("click", function(event) {
     event.preventDefault()
+    affiche()
     reset()
     searchRandomWord()
     dataToUnder(randomWord)
     ShowUnder()
   }); 
 
-document.addEventListener("keydown",function(event){
-    if (reg.test(event.key) == true ) {
-        caracKey = (event.key.toLowerCase())
-        history()
-        let pos = randomWord.indexOf(caracKey)
-        let count = 0
-        let ind = -1
-        while (pos != -1) {
-            count++;
-            pos = randomWord.indexOf(caracKey, pos + 1);
-        }
-        if(count > 0){
-            for (let i = 0; i < count; i++) {
-                    console.log(i)
-                    console.log("index:",ind,"i", i, "=", ind+i)
-                    ind = randomWord.indexOf(caracKey, ind+1)
-                    console.log("index: ",ind)
-                    console.log(UnderGuess)
-                    UnderGuess = UnderGuess.replaceAt(ind, caracKey)      
-            }
-        }
-        else if (alreadyUse==0){
-            attempt++
-            document.getElementById(`rect${attempt}`).style.display = "block"
-        }
-        else{
-            return
-        }
+  playbutton3.addEventListener("click", function(event) {
+    event.preventDefault()
+    let inputGuess = document.querySelector(".tryInput")
+    let valueInputGuess = inputGuess.value.toLowerCase()
+    if (valueInputGuess==randomWord){
         
-        UnderGuess = UnderGuess.charAt(0).toUpperCase() + UnderGuess.slice(1)
-        ShowUnder()
-        console.log(randomWord)
-        console.log(count)
-        console.log(UnderGuess)
-        console.log(UnderGuess.charAt(0).toUpperCase())
-        console.log(UnderGuess.slice(1))
-}   }   )
-   
-String.prototype.replaceAt = function(index, replacement) {
-    if (index >= this.length) {
-        return this.valueOf();
     }
-    return this.substring(0, index) + replacement + this.substring(index + 1);
+    // creatediv.classList.add('b');
+    // creatediv.id = 'presentation';
+    // document.body.appendChild(creatediv);
+  }); 
+  let modal = document.querySelector("#premierPlan")
+console.log(modal.classList.contains("show"))
+if (modal.classList.contains("show")) {
+    document.querySelector("#premierPlan").style.backgroundColor="yellow"
 }
+else{
+    document.addEventListener("keydown",function(event){
+        
+        console.log(event.target)
+        if (reg.test(event.key) == true ) {
+            caracKey = (event.key.toLowerCase())
+            history()
+            let pos = randomWord.indexOf(caracKey)
+            let count = 0
+            let ind = -1
+            while (pos != -1) {
+                count++;
+                pos = randomWord.indexOf(caracKey, pos + 1);
+            }
+            if(count > 0){
+                for (let i = 0; i < count; i++) {
+                        ind = randomWord.indexOf(caracKey, ind+1)
+                        UnderGuess = UnderGuess.replaceAt(ind, caracKey)      
+                }
+            }
+            else if (alreadyUse==0){
+                attempt++
+                document.getElementById(`rect${attempt}`).style.display = "block"
+            }
+            else{
+                return
+            }
+            
+            UnderGuess = UnderGuess.charAt(0).toUpperCase() + UnderGuess.slice(1)
+            ShowUnder()
+    }   }   )
+    
+    String.prototype.replaceAt = function(index, replacement) {
+        if (index >= this.length) {
+            return this.valueOf();
+        }
+        return this.substring(0, index) + replacement + this.substring(index + 1);
+    }
+}
+
+function Modal() {
+    document.getElementById("arrierePlan").style.display = "block";
+    document.getElementById("premierPlan").style.display = "block";
+    document.getElementById("premierPlan").classList.add("modalContentPerso", "show")
+    console.log(modal)
+    let cancelButtons = document.querySelectorAll(".close, .containerBgOpacity");
+        cancelButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                document.getElementById("arrierePlan").style.display = "none";
+                document.getElementById("premierPlan").style.display = "none";
+            });
+        })
+        console.log(modal.classList.contains("show"))
+};
 
 
  
