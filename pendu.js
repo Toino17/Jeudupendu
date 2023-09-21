@@ -50,7 +50,8 @@ let attempt=1
 let alreadyUse = 0
 let erreur = document.querySelector(".erreur")
 let balisedevineP = document.querySelector(".devineP")
-
+let baliseDevine = document.querySelector(".devineP")
+const tryWord = document.querySelector(".tryWord")
 
 function affiche (){
     baliseHistory.style.visibility = "visible"
@@ -74,9 +75,11 @@ function dataToUnder(randomWord){
 }
 
 function ShowUnder(){
-    let baliseDevine = document.querySelector(".devineP")
     baliseDevine.style.letterSpacing = "20px"
     baliseDevine.innerHTML = UnderGuess
+    if (UnderGuess.toLowerCase()==randomWord){
+        baliseDevine.style.color = "green"
+    }
 }
 
 function history(){
@@ -105,6 +108,8 @@ function reset(){
         document.getElementById(`rect${attempt}`).style.display = "none"   
     }
     attempt = 1
+    baliseDevine.style.color = "black"
+    tryWord.style.visibility = "hidden" 
 }
 
 
@@ -123,7 +128,8 @@ playbutton.addEventListener("click", function(event) {
     let inputGuess = document.querySelector(".tryInput")
     let valueInputGuess = inputGuess.value.toLowerCase()
     if (valueInputGuess==randomWord){
-        
+        baliseDevine.style.color = "green"
+
     }
     // creatediv.classList.add('b');
     // creatediv.id = 'presentation';
@@ -131,12 +137,12 @@ playbutton.addEventListener("click", function(event) {
   }); 
   let modal = document.querySelector("#premierPlan")
 console.log(modal.classList.contains("show"))
-if (modal.classList.contains("show")) {
-    document.querySelector("#premierPlan").style.backgroundColor="yellow"
-}
-else{
+
+function listenerKey(){
     document.addEventListener("keydown",function(event){
-        
+        if (modal.classList.contains("show")) {
+            return
+        }
         console.log(event.target)
         if (reg.test(event.key) == true ) {
             caracKey = (event.key.toLowerCase())
@@ -163,7 +169,11 @@ else{
             }
             
             UnderGuess = UnderGuess.charAt(0).toUpperCase() + UnderGuess.slice(1)
+            
             ShowUnder()
+            if (UnderGuess.toLowerCase()==randomWord){
+                
+            }
     }   }   )
     
     String.prototype.replaceAt = function(index, replacement) {
@@ -174,23 +184,24 @@ else{
     }
 }
 
+listenerKey()
+
+
 function Modal() {
     document.getElementById("arrierePlan").style.display = "block";
     document.getElementById("premierPlan").style.display = "block";
     document.getElementById("premierPlan").classList.add("modalContentPerso", "show")
     console.log(modal)
-    let cancelButtons = document.querySelectorAll(".close, .containerBgOpacity");
+    let cancelButtons = document.querySelectorAll(".close, .containerBgOpacity, .playButton3");
         cancelButtons.forEach(function (button) {
             button.addEventListener("click", function () {
+                document.getElementById("premierPlan").classList.remove("show")
                 document.getElementById("arrierePlan").style.display = "none";
                 document.getElementById("premierPlan").style.display = "none";
             });
         })
         console.log(modal.classList.contains("show"))
 };
-
-
- 
 
 
 // document.body.style.backgroundColor="red"
